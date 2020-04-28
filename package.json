@@ -1,0 +1,14 @@
+{
+  "name": "javascript-profesional",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:davidra24/Javascript-Profesional.git",
+  "author": "David Ramírez <cdavidramirezg24@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "live-server ./public/"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
