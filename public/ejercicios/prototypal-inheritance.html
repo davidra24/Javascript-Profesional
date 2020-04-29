@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Herencia Prototipal</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <h1>
+      <code>SomeObject.prototype</code> es un objeto donde definimos el
+      prototipo de las instancias de <code>SomeObject</code>. Es decir, las
+      instancias de <code>SomeObject</code> van a "heredar" de
+      <code>SomeObject.prototype</code>.
+      <br />
+      <br />
+      <code>SomeObject.[[Prototype]]</code> es el prototipo de
+      <code>SomeObject</code>. Es decir, <code>SomeObject</code> "hereda" de
+      <code>SomeObject.prototype</code>.
+    </h1>
+
+    <script>
+      function Hero(name) {
+        this.name = name;
+      }
+
+      Hero.prototype.saludar = function () {
+        console.log(`Hola, soy ${this.name}.`);
+      };
+
+      const zelda = new Hero('Zelda');
+
+      // propiedades de la instancia
+      console.log('Name:', zelda.name);
+      // propiedades de la "clase"
+      console.log('Saludar:', zelda.saludar);
+
+      // propiedades heredadas ej: toString
+      console.log('toString:', zelda.toString);
+
+      // hasOwnProperty (de dónde sale toString o esto?)
+      console.log(
+        'zelda.hasOwnProperty("name"):',
+        zelda.hasOwnProperty('name')
+      );
+      console.log(
+        'zelda.hasOwnProperty("saludar"):',
+        zelda.hasOwnProperty('saludar')
+      );
+
+      ///GET __PROTO__
+      console.log('Prototype', Object.getPrototypeOf(zelda));
+
+      const protoOfZelda = Object.getPrototypeOf(zelda);
+
+      ///Es el mismo objeto en memoria
+      console.log(protoOfZelda === Hero.prototype);
+
+      Hero.prototype.fight = function () {
+        console.log('fight');
+      };
+
+      zelda.fight();
+      console.log(zelda.hasOwnProperty('fight')); //false -> es de su padre (herencia prototipal)
+
+      console.log('zelda to string', zelda.toString());
+      console.log(zelda.hasOwnProperty('toString'));
+
+      const protoOfProtoOfZelda = Object.getPrototypeOf(Hero.prototype);
+      console.log(protoOfProtoOfZelda);
+      console.log(protoOfProtoOfZelda.hasOwnProperty('toString')); ///Existe es el padre principal (Object)
+
+      const protoOfObject = Object.getPrototypeOf(Object.prototype); ///Object es el prototype principal no tiene prototype padre
+      console.log(protoOfObject);
+
+      // inspeccionemos el prototipo del zelda
+      // inspeccionemos el prototipo del Hero
+      // inspeccionemos el prototipo del Object
+    </script>
+  </body>
+</html>

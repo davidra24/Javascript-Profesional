@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>
+      Function.prototype.call, Function.prototype.apply, Function.prototype.bind
+    </title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender Más</button></li>
+      <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+    </ul>
+
+    <script>
+      function saludar() {
+        console.log(`Hola, soy ${this.nombre} ${this.apellido}`);
+      }
+      const david = {
+        nombre: 'David',
+        apellido: 'Ramírez',
+      };
+
+      // Establece `this` usando `call`
+      //this para saludar
+      saludar.call(david);
+
+      function caminar(metros, direccion) {
+        console.log(
+          `${this.nombre} camina ${metros} metros hacia ${direccion}`
+        );
+      }
+
+      // Establece `this` usando `call` y pasar argumentos a la función
+      /// contexto, args
+      caminar.call(david, 400, 'norte');
+
+      // Establece `this` usando `apply` y pasar argumentos a la función
+      // contexto, ars como arreglo
+      const valores = [500, 'sur'];
+      caminar.apply(david, valores);
+
+      /*
+        Call -> Coma
+        Apply -> Arreglo
+      */
+
+      // Establecer `this` en una nueva función usando `bind`
+      const pepe = { nombre: 'Pepe', apellido: 'Sánchez' };
+      //bind crea una nueva función, por lo que se debe asignar como un nuevo valor
+      const pepesaluda = saludar.bind(pepe);
+      pepesaluda();
+
+      const pepeCamina1 = caminar.bind(pepe);
+      pepeCamina1(1000, 'este');
+      const pepeCamina2 = caminar.bind(pepe, 1000, 'este');
+      pepeCamina2();
+      const pepeCamina3 = caminar.bind(pepe, 1000);
+      pepeCamina3('este');
+
+      // Cuándo es útil usar uno de estos métodos
+
+      const buttons = document.getElementsByClassName('call-to-action');
+
+      //No sirve es un node list no un array
+      /*buttons.forEach((button) => {
+        button.onclick = () => alert('nunca pares de aprender');
+      });*/
+      ///Implementar for each a nodelist
+      Array.prototype.forEach.call(buttons, (button) => {
+        button.onclick = () => alert('nunca pares de aprender');
+      });
+    </script>
+  </body>
+</html>
