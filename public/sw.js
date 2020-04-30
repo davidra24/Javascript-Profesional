@@ -36,13 +36,13 @@ async function updateCache(request) {
 async function precache() {
   const cache = await caches.open(VERSION_CACHE);
   return cache.addAll([
-    '/',
+    /* '/',
     '/index.html',
     '/js/index.js',
     '/js/media/MediaPlayer.js',
     '/js/plugins/AutoPlay.js',
     '/js/plugins/AutoPause.js',
     '/styles/index.css',
-    '/assets/video/BigBuckBunny.mp4',
+    '/assets/video/BigBuckBunny.mp4', */
   ]);
 }

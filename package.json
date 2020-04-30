@@ -6,9 +6,13 @@
   "author": "David Ramírez <cdavidramirezg24@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "live-server ./public/"
+    "start": "parcel ./public/index.html ./public/sw.js ./public/ejercicios/**/*.html ./public/ts/**/*.html"
   },
   "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.8.3"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }
