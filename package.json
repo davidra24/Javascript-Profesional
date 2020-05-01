@@ -6,7 +6,7 @@
   "author": "David Ramírez <cdavidramirezg24@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel ./public/index.html ./public/sw.js ./public/ejercicios/**/*.html ./public/ts/**/*.html"
+    "start": "parcel ./public/index.html ./public/sw.js ./public/ejercicios/**/*.html ./public/design/**/*.html ./public/ts/**/*.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
